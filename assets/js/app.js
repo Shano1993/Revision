@@ -8,15 +8,21 @@ document.addEventListener('contextmenu', function (event){
 
 for (let i = 0; i < cases.length; i++) {
     cases[i].addEventListener('mouseup', function (event) {
-        switch (event.button) {
-            case LEFT_BUTTON:
-                this.innerHTML = 'X';
-                this.classList.add('green');
-                break;
-            case RIGHT_BUTTON:
-                this.innerHTML = 'O';
-                this.classList.add('red');
-                break;
-        }
+        if(event.button === LEFT_BUTTON)
+            inserText(this, 'X', 'green');
+        else if(event.button === RIGHT_BUTTON)
+            inserText(this, 'O', 'red');
     })
+}
+
+/**
+ *
+ * @param element
+ * @param lettreJoueur
+ * @param classCss
+ */
+
+function inserText(element, lettreJoueur, classCss) {
+    element.innerHTML = lettreJoueur;
+    element.classList.add(classCss);
 }
